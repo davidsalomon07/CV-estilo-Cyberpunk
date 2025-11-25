@@ -1,0 +1,32 @@
+.app {
+  min-height: 100vh;
+}
+
+.card {
+  padding: 1.5rem;
+  background: rgba(30, 30, 60, 0.5);
+  border-radius: 10px;
+  border-left: 4px solid #00ffff;
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 255, 255, 0.2);
+}
+
+.card h3 {
+  color: #00ffff;
+  margin-bottom: 0.5rem;
+}
+
+.card h3 span {
+  color: #ff00ff;
+  font-weight: normal;
+}
+
+.period {
+  color: #ff00ff;
+  font-style: italic;
+  margin: 0.5rem 0;
+}

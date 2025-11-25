@@ -1,0 +1,18 @@
+.skill { margin-bottom: 1.5rem; }
+.header { display: flex; justify-content: space-between; margin-bottom: 0.5rem; font-weight: 600; }
+.name { color: #00ffff; }
+.percent { color: #ff00ff; }
+.bar {
+  height: 12px;
+  background: #1a1a2e;
+  border-radius: 6px;
+  overflow: hidden;
+  border: 1px solid #00ffff44;
+}
+.fill {
+  height: 100%;
+  background: linear-gradient(90deg, #00ffff, #ff00ff);
+  border-radius: 6px;
+  transition: width 2s ease-in-out;
+  box-shadow: 0 0 15px #00ffff;
+}
