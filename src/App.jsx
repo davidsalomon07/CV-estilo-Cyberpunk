@@ -1,56 +1,75 @@
-import React from 'react'
-import Header from './components/Header.jsx'
-import Section from './components/Section.jsx'
-import SkillBar from './components/SkillBar.jsx'
-import ContactItem from './components/ContactItem.jsx'
-import Footer from './components/Footer.jsx'
-import { cvData } from './data/cvData.js'
-import styles from './styles/App.module.css'
+import React from 'react';
+import { Routes, Route, Link } from 'react-router-dom';
+import Home from './pages/Home.jsx';
+import BlogList from './pages/BlogList.jsx';
+import BlogDetail from './pages/BlogDetail.jsx';
+import { useTheme } from './contexts/ThemeContext.jsx';
+import styles from './styles/App.module.css';
 
 function App() {
-  const { personal, education, experience, skills } = cvData
+  const { theme, toggleTheme } = useTheme();
+
+  const cyan = theme === 'dark' ? '#00ffff' : '#00aaff';
+  const magenta = theme === 'dark' ? '#ff00ff' : '#ff66aa';
 
   return (
     <div className={styles.app}>
-      <Header data={personal} />
-
-      <Section title="Educación">
-        {education.map((edu, i) => (
-          <div key={i} className={styles.card}>
-            <h3>{edu.degree}</h3>
-            <p><strong>{edu.school}</strong> • {edu.year}</p>
-            <p>{edu.description}</p>
+      <header style={{
+        padding: '1.5rem 2rem',
+      }}>
+        <nav style={{
+          maxWidth: '1000px',
+          margin: '0 auto',
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          fontSize: '1.3rem'
+        }}>
+          <div style={{ display: 'flex', gap: '3rem' }}>
+            <Link to="/" style={{ color: cyan, textDecoration: 'none', fontWeight: '600' }}>
+              Hoja de Vida
+            </Link>
+            <Link to="/posts" style={{ color: magenta, textDecoration: 'none', fontWeight: '600' }}>
+              Blog Técnico
+            </Link>
           </div>
-        ))}
-      </Section>
+          <button
+            onClick={toggleTheme}
+            style={{
+              background: 'transparent',
+              border: `2px solid ${cyan}`,
+              color: cyan,
+              padding: '0.6rem 1.2rem',
+              borderRadius: '8px',
+              cursor: 'pointer',
+              fontSize: '1rem',
+              fontWeight: '600',
+              transition: 'all 0.3s ease'
+            }}
+          >
+            {theme === 'dark' ? '☀️ Modo Claro' : '🌙 Modo Oscuro'}
+          </button>
+        </nav>
+      </header>
 
-      <Section title="Experiencia">
-        {experience.map((exp, i) => (
-          <div key={i} className={styles.card}>
-            <h3>{exp.role} <span>@ {exp.company}</span></h3>
-            <p className={styles.period}>{exp.period}</p>
-            <p>{exp.description}</p>
-          </div>
-        ))}
-      </Section>
+      <main style={{ minHeight: '80vh', padding: '2rem 0' }}>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/posts" element={<BlogList />} />
+          <Route path="/posts/:id" element={<BlogDetail />} />
+        </Routes>
+      </main>
 
-      <Section title="Habilidades">
-        {skills.map((skill, i) => (
-          <SkillBar key={i} name={skill.name} level={skill.level} />
-        ))}
-      </Section>
-
-      <Section title="Contacto">
-        <div style={{ textAlign: 'center', fontSize: '1.3rem' }}>
-          <ContactItem icon="Correo" text={personal.email} link={`mailto:${personal.email}`} />
-          <ContactItem icon="LinkedIn" text={personal.linkedin} link={`https://${personal.linkedin}`} />
-          <ContactItem icon="GitHub" text={personal.github} link={`https://${personal.github}`} />
-        </div>
-      </Section>
-
-      <Footer />
+      <footer style={{
+        textAlign: 'center',
+        padding: '3rem 1rem',
+        color: cyan,
+        fontSize: '1.1rem'
+      }}>
+        © 2025 David Salomón • Portafolio Cyberpunk con React + JSON Server
+      </footer>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;

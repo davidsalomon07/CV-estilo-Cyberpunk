@@ -6,20 +6,45 @@
   box-sizing: border-box;
 }
 
+html, body, #root {
+  height: 100%;
+  width: 100%;
+}
+
 body {
   font-family: 'Rajdhani', sans-serif;
-  background: #0d0d1a;
-  color: #e0e0ff;
   line-height: 1.6;
   overflow-x: hidden;
+  transition: background 0.5s ease, color 0.5s ease;
 }
 
-.glow {
-  text-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff, 0 0 40px #00ffff;
+/* Modo oscuro */
+body.dark {
+  background: #0d0d1a;
+  color: #e0e0ff;
 }
 
-.glow-purple {
+/* Modo claro */
+body.light {
+  background: #ffffff;
+  color: #000000;
+}
+
+/* Glow */
+body.dark .glow {
+  text-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff;
+}
+
+body.dark .glow-purple {
   text-shadow: 0 0 10px #ff00ff, 0 0 20px #ff00ff;
+}
+
+body.light .glow {
+  text-shadow: 0 0 10px #0099ff, 0 0 20px #0099ff;
+}
+
+body.light .glow-purple {
+  text-shadow: 0 0 10px #ff66aa, 0 0 20px #ff66aa;
 }
 
 @keyframes pulse {

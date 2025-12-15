@@ -1,0 +1,32 @@
+{
+  "experiencia": [
+    {
+      "id": 1,
+      "role": "Desarrollador Frontend Freelance",
+      "company": "Proyectos personales y clientes locales",
+      "period": "2024 − Presente",
+      "description": "Aplicaciones web con React + Vite, diseño responsivo, integración de APIs y estética cyberpunk."
+    },
+    {
+      "id": 2,
+      "role": "Colaborador Open Source",
+      "company": "GitHub Community",
+      "period": "2024 − Presente",
+      "description": "Contribuciones a repositorios de React y componentes UI."
+    }
+  ],
+  "posts": [
+    {
+      "id": 1,
+      "title": "Cómo construir una lista de tareas con React y JSON Server",
+      "date": "2025-04-10",
+      "content": "En este tutorial vamos a crear una aplicación CRUD completa (Crear, Leer, Actualizar, Eliminar) de tareas usando React, React Router, Axios y JSON Server como backend simulado.\n\nPaso 1: Configurar JSON Server\nCrea un db.json con una colección 'tasks'.\n\nPaso 2: Frontend con React + Vite\nUsamos useState y useEffect para manejar el estado, y Axios para las peticiones:\n\n```jsx\nimport axios from 'axios';\nconst [tasks, setTasks] = useState([]);\nuseEffect(() => {\n  axios.get('/tasks').then(res => setTasks(res.data));\n}, []);\n```\n\nPaso 3: Custom hooks\nCreamos useTasks.js para encapsular la lógica de Axios.\n\nPaso 4: React Router para navegación entre lista y formulario.\n\nResultado: Una app full-stack local con persistencia simulada. ¡Ideal para practicar el flujo completo de datos!"
+    },
+    {
+      "id": 2,
+      "title": "Análisis de la propuesta 'Iterator Helpers' en TC39",
+      "date": "2025-05-15",
+      "content": "La propuesta 'Sync Iterator Helpers' (actualmente en Stage 3) busca agregar métodos útiles como map, filter, reduce, etc., directamente a los iteradores síncronos de JavaScript.\n\nProblema que resuelve:\nActualmente, para usar métodos de array en un iterador, debemos convertirlo primero con [...iterator] o Array.from(), lo que consume memoria innecesaria.\n\nCómo funciona:\nPermite encadenar operaciones directamente:\n```js\nfunction* numbers() { yield 1; yield 2; yield 3; }\nconst squared = numbers().map(x => x * x);\nfor (const n of squared) console.log(n); // 1, 4, 9\n```\n\nRelevancia:\nMejora la eficiencia en procesamiento de streams grandes (como lecturas de archivos o generators) y hace el código más expresivo.\n\nMi opinión:\nEs extremadamente útil para código moderno y funcional. El riesgo principal es romper polyfills antiguos, pero los beneficios en performance y legibilidad superan con creces. ¡Espero que llegue a Stage 4 pronto!"
+    }
+  ]
+}

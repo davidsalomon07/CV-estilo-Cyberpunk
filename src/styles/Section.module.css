@@ -1,13 +1,35 @@
-.section { padding: 4rem 2rem; position: relative; }
+.section {
+  padding: 4rem 2rem;
+  position: relative;
+}
+
 .container {
   max-width: 1000px;
   margin: 0 auto;
   padding: 2rem;
   background: rgba(20, 20, 40, 0.6);
   border-radius: 12px;
-  backdrop-filter: blur(10px);
   border: 1px solid #00ffff33;
   box-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
 }
-.title { font-size: 2.5rem; margin-bottom: 2rem; text-align: center; letter-spacing: 3px; }
-.content { display: grid; gap: 2rem; }
+
+.title {
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  text-align: center;
+  letter-spacing: 3px;
+}
+
+.content {
+  display: grid;
+  gap: 2rem;
+}
+
+/* Modo claro */
+html[data-theme="light"] .container {
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid #00aaff33;
+  box-shadow: 0 0 20px rgba(0, 170, 255, 0.2);
+  color: #000000;
+}

@@ -4,10 +4,11 @@
 
 .card {
   padding: 1.5rem;
-  background: rgba(30, 30, 60, 0.5);
+  background: rgba(30, 30, 60, 0.6);
   border-radius: 10px;
   border-left: 4px solid #00ffff;
   transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
 }
 
 .card:hover {
@@ -29,4 +30,27 @@
   color: #ff00ff;
   font-style: italic;
   margin: 0.5rem 0;
+}
+
+/* Modo claro */
+html[data-theme="light"] .card {
+  background: rgba(255, 255, 255, 0.95);
+  border-left: 4px solid #00aaff;
+  color: #000000;
+}
+
+html[data-theme="light"] .card:hover {
+  box-shadow: 0 10px 20px rgba(0, 170, 255, 0.2);
+}
+
+html[data-theme="light"] .card h3 {
+  color: #0066cc;
+}
+
+html[data-theme="light"] .card h3 span {
+  color: #cc3399;
+}
+
+html[data-theme="light"] .period {
+  color: #cc3399;
 }
